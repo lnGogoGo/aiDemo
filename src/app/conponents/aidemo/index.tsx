@@ -1,6 +1,5 @@
 import React from 'react';
 import { usePollinationsImage } from '@pollinations/react';
-import Image from 'next/image';
 
 const AiDemo = ({ text }: { text: string }) => {
   const imageUrl = usePollinationsImage(text, {
