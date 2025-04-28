@@ -14,7 +14,7 @@ const AiDemo = ({ text }: { text: string }) => {
   return (
     <div>
       {imageUrl ? (
-        <Image
+        <img
           src={imageUrl}
           alt="Generated image"
           style={{
