@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import styles from './index.module.css';
 
 export default function HomePage() {
   const [input, setInput] = useState('')
@@ -16,15 +17,15 @@ export default function HomePage() {
   }
 
   return (
-    <div>
-      <h1>Chat with GPT</h1>
+    <div className={styles.container}>
+      <h1 className={styles.text}>单次询问问题</h1>
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Ask me anything"
       />
-      <button onClick={handleSubmit}>Send</button>
-      <p>Response: {response}</p>
+      <button onClick={handleSubmit}>发送</button>
+      <p className={styles.text}>结果: {response}</p>
     </div>
   )
 }
