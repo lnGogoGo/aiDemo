@@ -25,7 +25,7 @@ export default function HomePage() {
         placeholder="Ask me anything"
       />
       <button onClick={handleSubmit}>发送</button>
-      <p className={styles.text}>结果: {response}</p>
+      <div className={styles.result}>结果: {response}</div>
     </div>
   )
 }
