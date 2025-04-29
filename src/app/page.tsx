@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import AiDemo from './conponents/aidemo';
 import styles from './page.module.css';
+import AiDemo from './conponents/aidemo';
 
 export default function Home() {
   const [text, setText] = useState("");
