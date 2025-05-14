@@ -9,14 +9,30 @@ console.log('completion', openai, )
 
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json()
-    console.log('message', message, );
+    const { message, conversationHistory = [] } = await req.json()
+    
+    // Prepare messages array with conversation history
+    const messages = [
+      ...conversationHistory,
+      { role: 'user', content: message }
+    ]
+    
     const completion = await openai.chat.completions.create({
       model: "grok-3-latest",
-      messages: [{ role: 'user', content: message }],
+      messages,
     })
-    console.log('completion', completion, )
-    return NextResponse.json({ reply: completion.choices[0].message.content })
+    
+    // Get the assistant's response
+    const assistantMessage = completion.choices[0].message
+    
+    // Return both the reply and updated conversation history
+    return NextResponse.json({ 
+      reply: assistantMessage.content,
+      conversationHistory: [
+        ...messages,
+        { role: assistantMessage.role, content: assistantMessage.content }
+      ]
+    })
   } catch (error: any) {
     console.error('❌ API Error:', error)
     return NextResponse.json({ error: 'Internal Server Error', detail: error.message }, { status: 500 })

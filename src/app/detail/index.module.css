@@ -1,19 +1,211 @@
 .container {
   width: 100%;
   height: 100vh;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.05);
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fa;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-.text {
+.header {
+  padding: 16px;
+  background: #1890ff;
+  color: white;
+  text-align: center;
+  font-size: 18px;
   font-weight: 500;
-  margin: 10px 0;
-  width: 90%;
-  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.result {
+.modelSelector {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  white-space: pre-wrap;
+  max-width: 500px;
+}
+
+.select {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.select:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.apiKeyInput {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.apiKeyInput:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.modelButton {
+  background: rgba(255, 255, 255, 0.2);
+  color: #000;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modelButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.activeModel {
+  background: rgba(255, 255, 255, 0.4);
+  font-weight: bold;
+}
+
+.chatContainer {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background: #1890ff;
+  color: white;
+  border-radius: 12px 12px 0 12px;
+}
+
+.botMessage {
+  align-self: flex-start;
+  background: white;
+  color: #333;
+  border-radius: 12px 12px 12px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.systemMessage {
+  align-self: center;
+  background: rgba(0, 0, 0, 0.05);
+  color: #666;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  max-width: 90%;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #e8e8e8;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.sendButton {
+  margin-left: 12px;
+  padding: 0 20px;
+  height: 40px;
+  background: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sendButton:hover {
+  background: #40a9ff;
+}
+
+.sendButton:disabled {
+  background: #d9d9d9;
+  cursor: not-allowed;
+}
+
+.menuButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.menuButton:hover {
+  background: #40a9ff;
+}
+
+.menuContent {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.menuContent.show {
+  display: flex;
 }
