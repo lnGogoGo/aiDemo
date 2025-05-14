@@ -2,17 +2,17 @@ import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY_FORWARD,
-  baseURL: process.env.OPENAI_API_BASE
+  apiKey: process.env.Grok_API_KEY,
+  baseURL: process.env.Grok_API_BASE
 })
 console.log('completion', openai, )
 
 export async function POST(req: Request) {
   try {
     const { message } = await req.json()
-
+    console.log('message', message, );
     const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: "grok-3-latest",
       messages: [{ role: 'user', content: message }],
     })
     console.log('completion', completion, )
