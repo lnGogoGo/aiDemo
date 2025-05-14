@@ -14,9 +14,12 @@ type Model = {
 };
 
 const supportedModels: Model[] = [
-  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
   { id: 'gpt-4o-mini', name: 'GPT-4o Mini' },
+  { id: 'gpt-4.1-mini', name: 'GPT-4.1 Mini' },
+  { id: 'gpt-4.1-nano', name: 'GPT-4.1 Nano' },
   { id: 'gpt-4o', name: 'GPT-4o' },
+  { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo' },
+
 ];
 
 const renderMessageContent = (content: string) => {
