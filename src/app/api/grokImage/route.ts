@@ -11,7 +11,8 @@ console.log('completion', openai, )
 async function convertImageUrlToBase64(imageUrl: string): Promise<string> {
   const response = await fetch(imageUrl)
   const buffer = await response.buffer()
-  return buffer.toString('base64')
+  const base64 = buffer.toString('base64')
+  return `data:image/png;base64,${base64}`
 }
 
 export async function POST(req: Request) {
